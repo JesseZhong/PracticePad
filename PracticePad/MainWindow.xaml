@@ -1,0 +1,80 @@
+﻿<Window x:Class="PracticePad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticePad"
+		xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="PracticePad" Height="486.051" Width="650.078"
+		KeyDown="Window_KeyDown"
+		KeyUp="Window_KeyUp">
+    <Window.Resources>
+        <GridLength x:Key="ButtonWidth">64</GridLength>
+        <GridLength x:Key="ButtonHeight">64</GridLength>
+        <SolidColorBrush x:Key="ButtonForeground">Black</SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonActiveForeground">DeepSkyBlue</SolidColorBrush>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Setter Property="Background" Value="#FFFDFDFD"/>
+                <Style.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="VerticalAlignment" Value="Top"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="#FFFDFDFD"/>
+                        <Setter Property="FontSize" Value="28"/>
+						<Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
+                        <Setter Property="FontWeight" Value="DemiBold"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource ButtonActiveForeground}"/>
+                                <Setter Property="FontSize" Value="27"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </Grid.Style>
+        <Grid HorizontalAlignment="Right" Height="320" VerticalAlignment="Bottom" Width="256" Margin="24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{DynamicResource ButtonWidth}"/>
+                <ColumnDefinition Width="{DynamicResource ButtonWidth}"/>
+                <ColumnDefinition Width="{DynamicResource ButtonWidth}"/>
+                <ColumnDefinition Width="{DynamicResource ButtonWidth}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{DynamicResource ButtonWidth}"/>
+                <RowDefinition Height="{DynamicResource ButtonWidth}"/>
+                <RowDefinition Height="{DynamicResource ButtonWidth}"/>
+                <RowDefinition Height="{DynamicResource ButtonWidth}"/>
+                <RowDefinition Height="{DynamicResource ButtonWidth}"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="NumLkButton" Content="NumLk" FontSize="16"/>
+            <Button x:Name="DivButton" Content="/" Grid.Column="1" Click="DivButton_Click"/>
+            <Button x:Name="MulButton" Content="*" Grid.Column="2" Click="MulButton_Click"/>
+            <Button x:Name="SubButton" Content="-" Grid.Column="3" Click="SubButton_Click"/>
+            <Button x:Name="SevenButton" Content="7" Grid.Row="1" Click="SevenButton_Click"/>
+            <Button x:Name="EightButton" Content="8" Grid.Row="1" Grid.Column="1" Click="EightButton_Click"/>
+            <Button x:Name="NineButton" Content="9" Grid.Row="1" Grid.Column="2" Click="NineButton_Click"/>
+            <Button x:Name="AddButton" Content="+" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" FontSize="32" Click="AddButton_Click"/>
+            <Button x:Name="FourButton" Content="4" Grid.Row="2" Click="FourButton_Click"/>
+            <Button x:Name="FiveButton" Content="5" Grid.Row="2" Grid.Column="1" Click="FiveButton_Click"/>
+            <Button x:Name="SixButton" Content="6" Grid.Row="2" Grid.Column="2" Click="SixButton_Click"/>
+            <Button x:Name="OneButton" Content="1" Grid.Row="3" Click="OneButton_Click"/>
+            <Button x:Name="TwoButton" Content="2" Grid.Row="3" Grid.Column="1" Click="TwoButton_Click"/>
+            <Button x:Name="ThreeButton" Content="3" Grid.Row="3" Grid.Column="2" Click="ThreeButton_Click"/>
+            <Button x:Name="ZeroButton" Content="0" Grid.Row="4" Grid.ColumnSpan="2" Click="ZeroButton_Click"/>
+            <Button x:Name="DecimalButton" Content="." Grid.Row="4" Grid.Column="2" Click="DecimalButton_Click"/>
+            <Button x:Name="EnterButton" Content="&#8629;" Grid.Row="3" Grid.Column="3" Grid.RowSpan="2" FontSize="32" Click="EnterButton_Click"/>
+        </Grid>
+        <TextBlock x:Name="HistoryLog" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="410" Margin="10,21,0,0" Padding="5" FontSize="32" TextWrapping="Wrap" TextAlignment="Center"/>
+        <TextBox x:Name="InputBox" Text="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="256" Height="55" Margin="362,21,0,0" Padding="5" FontSize="32" TextAlignment="Right" IsReadOnly="True"/>
+
+    </Grid>
+</Window>
